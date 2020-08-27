@@ -14,7 +14,9 @@ while op != 4:
         print('REGRAS: \n'
               'O alfabeto usado será: P, Q e R; \n'
               'Pode-se usar apenas uma vez cada símbolo de pontuação;\n'
-              'O tamanho máximo de cada fórmula seria de 12 (considerando também os símbolos).')
+              'Os operadores deverão ser informados da seguinte maneira: \n'
+              ' Negação ~\n Conjunção '
+              'O tamanho máximo de cada fórmula é de 12 caracteres (considerando também os símbolos).')
 
         formula = input('Digite a fórmula: ')
 
@@ -24,3 +26,10 @@ while op != 4:
         else:
             print('\nA fórmula digitada é: ', formula)
 
+
+    if op == 2:
+        for cont in formula:
+            
+
+    if op == 3:
+        print('Tamanho da fórmula é: ', len(formula))
