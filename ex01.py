@@ -15,7 +15,8 @@ while op != 4:
               'O alfabeto usado será: P, Q e R; \n'
               'Pode-se usar apenas uma vez cada símbolo de pontuação;\n'
               'Os operadores deverão ser informados da seguinte maneira: \n'
-              ' Negação ~\n Conjunção '
+              'Pensei em colocar como se deve inserir os operadores.'
+              'Deve ter alguma biblioteca pra isso'
               'O tamanho máximo de cada fórmula é de 12 caracteres (considerando também os símbolos).')
 
         formula = input('Digite a fórmula: ')
@@ -28,8 +29,8 @@ while op != 4:
 
 
     if op == 2:
-        for cont in formula:
-            
 
+
+    '''função len calcula o tamanho da formula contando todos os caracteres incluindo ()'''
     if op == 3:
         print('Tamanho da fórmula é: ', len(formula))
