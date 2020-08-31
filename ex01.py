@@ -1,18 +1,46 @@
+alfabeto = ['P', 'Q', 'R', '(', ')', '~', '$', 'v', '^', '>']
+achei = True
 op = 0
+
+
+def check_position():
+      for position, item in enumerate(formula):
+            if item == 'v':
+                if position == 0:
+                    print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
+            elif  item ==  '^':
+                if position == 0:
+                    print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
+            elif  item ==  '>':
+                if position == 0:
+                    print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
+            elif  item ==  '$':
+                if position == 0:
+                    print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
+            else:
+                return True
+                break
+
+def check_alfabeto():
+    if set(formula).intersection(alfabeto):
+            check_position()
+    else:
+            return 0;
+
 while op != 4:
     print('MENU DE OPERAÇÕES: \n'
-               '1- Informe a fórmula para realizar as operações; \n'
-               '2- Verifica se a fórmula é válida; \n'
-               '3- Calcular o tamanho da fórmula.\n'
-               '4- Fecha o programa\n')
+          '1- Informe a fórmula para realizar as operações; \n'
+          '2- Verifica se a fórmula é válida; \n'
+          '3- Calcular o tamanho da fórmula.\n'
+          '4- Fecha o programa\n')
 
     op = int(input('Digite a operação desejada: '))
-
 
     if op == 1:
 
         print('REGRAS: \n'
               'O alfabeto usado será: P, Q e R; \n'
+              'Os simbolos proposicionais são:\nNegação = ~\nOu,Or = v\nSe somente se = $\nAnd, Conjução = ^\nSe,Implicação = >'
               'Pode-se usar apenas uma vez cada símbolo de pontuação;\n'
               'Os operadores deverão ser informados da seguinte maneira: \n'
               'Pensei em colocar como se deve inserir os operadores.'
@@ -27,8 +55,13 @@ while op != 4:
         else:
             print('\nA fórmula digitada é: ', formula)
 
-
     if op == 2:
+        formula
+
+        check_alfabeto()
+        if check_position == True:
+            print("Formula valida parabens")
+
 
 
     '''função len calcula o tamanho da formula contando todos os caracteres incluindo ()'''
