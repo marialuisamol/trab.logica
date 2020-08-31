@@ -8,24 +8,28 @@ def check_position():
             if item == 'v':
                 if position == 0:
                     print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
-            elif  item ==  '^':
+                    break
+            if  item ==  '^':
                 if position == 0:
                     print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
-            elif  item ==  '>':
+                    break
+            if  item ==  '>':
                 if position == 0:
                     print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
-            elif  item ==  '$':
+                    break
+            if  item ==  '$':
                 if position == 0:
                     print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
+                    break
             else:
-                return True
+                print("Formula valida parabens")
                 break
 
 def check_alfabeto():
     if set(formula).intersection(alfabeto):
             check_position()
     else:
-            return 0;
+        print('Fórmula inválida!')
 
 while op != 4:
     print('MENU DE OPERAÇÕES: \n'
@@ -57,11 +61,7 @@ while op != 4:
 
     if op == 2:
         formula
-
         check_alfabeto()
-        if check_position == True:
-            print("Formula valida parabens")
-
 
 
     '''função len calcula o tamanho da formula contando todos os caracteres incluindo ()'''
