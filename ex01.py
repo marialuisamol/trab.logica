@@ -3,8 +3,9 @@
 
 
 alfabeto = ['P', 'Q', 'R', '(', ')', '~', '$', 'v', '^', '>']
-operando = ['P', 'Q', 'R', '(', ')']
-operadores = ['~', '$', 'v', '^', '>']
+letras = ['P', 'Q', 'R']
+operadores = ['$', 'v', '^', '>']
+dif = ['~','(',')']
 
 i = 0
 op = 0
@@ -16,15 +17,15 @@ def check_position():
                 if position == 0:
                     print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
                     break
-            if  item ==  '^':
+            if item == '^':
                 if position == 0:
                     print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
                     break
-            if  item ==  '>':
+            if item == '>':
                 if position == 0:
                     print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
                     break
-            if  item ==  '$':
+            if item == '$':
                 if position == 0:
                     print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
                     break
@@ -37,7 +38,7 @@ def check_operadores():
     verif = 0
     for i in range(len(formula)-1):
         if formula[i] in operadores:
-            if formula[i + 1] in operando:
+            if formula[i + 1] in letras or formula[i + 1] in dif:
                 formula[i + 1]
                 verif += 1
 
@@ -45,14 +46,22 @@ def check_operadores():
                 print('Inválida. Tente novamente!')
                 break
 
-        elif formula[i] in operando:
-            if formula[i + 1] in operadores:
+        elif formula[i] in letras:
+            if formula[i + 1] in operadores or formula[i + 1] in dif:
                 formula[i + 1]
-                print('Nada de errado até agora')
+                verif += 1
             else:
                 print('Fórmula inválida! Tente novamente!')
                 break
-    if verif == len(formula):
+
+        elif formula[i] in dif:
+            if formula[i] != formula[i+1] or formula[i] != operadores:
+                verif += 1
+            else:
+                print('Fórmula inválida! Tente novamente!')
+                break
+
+    if verif == len(formula)-1:
         print('Fórmula Válida!')
 
 
@@ -64,7 +73,7 @@ def check_alfabeto():
         print('Fórmula inválida!')
 
 while op != 4:
-    print('MENU DE OPERAÇÕES: \n'
+    print('\n\nMENU DE OPERAÇÕES: \n'
           '1- Informe a fórmula para realizar as operações; \n'
           '2- Verifica se a fórmula é válida; \n'
           '3- Calcular o tamanho da fórmula.\n'
