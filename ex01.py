@@ -3,9 +3,8 @@
 
 
 alfabeto = ['P', 'Q', 'R', '(', ')', '~', '$', 'v', '^', '>']
-letras = ['P', 'Q', 'R']
+letras = ['P', 'Q', 'R','(',')']
 operadores = ['$', 'v', '^', '>']
-dif = ['~','(',')']
 
 i = 0
 op = 0
@@ -30,15 +29,15 @@ def check_position():
                     print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
                     break
             else:
-                check_operadores()
+                checa_sintaxe()
                 break
 
 
-def check_operadores():
+def checa_sintaxe():
     verif = 0
     for i in range(len(formula)-1):
         if formula[i] in operadores:
-            if formula[i + 1] in letras or formula[i + 1] in dif:
+            if formula[i + 1] in letras or formula[i + 1] == '~':
                 formula[i + 1]
                 verif += 1
 
@@ -47,15 +46,15 @@ def check_operadores():
                 break
 
         elif formula[i] in letras:
-            if formula[i + 1] in operadores or formula[i + 1] in dif:
+            if formula[i + 1] in operadores or formula[i + 1] == '~':
                 formula[i + 1]
                 verif += 1
             else:
                 print('Fórmula inválida! Tente novamente!')
                 break
 
-        elif formula[i] in dif:
-            if formula[i] != formula[i+1] or formula[i] != operadores:
+        elif formula[i] == '~':
+            if formula[i] != operadores:
                 verif += 1
             else:
                 print('Fórmula inválida! Tente novamente!')
@@ -98,11 +97,7 @@ while op != 4:
             print('\nA fórmula digitada é: ', formula)
 
     if op == 2:
-        formula
         check_alfabeto()
-
-
-
 
     #função len calcula o tamanho da formula contando todos os caracteres incluindo ()
     if op == 3:
