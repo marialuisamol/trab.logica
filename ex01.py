@@ -29,20 +29,20 @@ def check_position():
                     print('Fórmula inválida!, você inseriu um argumento inválido na primeira posição da formula, tente novamente')
                     break
             else:
-                print("Formula valida parabens")
+                check_operadores()
                 break
 
 
 def check_operadores():
-
+    verif = 0
     for i in range(len(formula)-1):
         if formula[i] in operadores:
             if formula[i + 1] in operando:
                 formula[i + 1]
-                print('Nada de errado até agora')
+                verif += 1
 
             else:
-                print('Parece que você não atribuiu símbolo a um operador')
+                print('Inválida. Tente novamente!')
                 break
 
         elif formula[i] in operando:
@@ -50,9 +50,10 @@ def check_operadores():
                 formula[i + 1]
                 print('Nada de errado até agora')
             else:
-                print('Parece que você não atribuiu símbolo a um operador')
+                print('Fórmula inválida! Tente novamente!')
                 break
-
+    if verif == len(formula):
+        print('Fórmula Válida!')
 
 
 
@@ -89,9 +90,8 @@ while op != 4:
 
     if op == 2:
         formula
-
         check_alfabeto()
-        check_operadores()
+
 
 
 
