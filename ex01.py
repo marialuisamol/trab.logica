@@ -1,4 +1,4 @@
-#ALUNOS: Fernando Mertinho, RA:
+#ALUNOS: Fernando Mertinho, RA: 0040886
 # Maria Luísa Mendonça RA: 0049545
 
 import ttg
@@ -34,6 +34,16 @@ def check_position():
                 check_sintaxe()
                 break
 
+def check_operando():
+    for i in range(len(formula)-1):
+        if formula[i] in operando:
+            if formula[i + 1] in operadores:
+                formula[i + 1]
+                print('Nada de errado até agora')
+            else:
+                print('Parece que você não atribuiu símbolo a um operador 2')
+                break
+    
 
 def check_sintaxe():
     verif = 0
