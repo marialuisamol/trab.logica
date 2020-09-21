@@ -3,9 +3,9 @@
 
 import ttg
 
-alfabeto = ['P', 'Q', 'R', '(', ')', '~', '$', 'v', '^', '>']
+alfabeto = ['P', 'Q', 'R', '(', ')', '~', '=', 'v', '^', '>']
 letras = ['P', 'Q', 'R']
-operadores = ['$', 'v', '^', '>']
+operadores = ['=', 'v', '^', '>']
 sim = ['(', ')']
 
 i = 0
@@ -32,16 +32,6 @@ def check_position():
                     break
             else:
                 check_sintaxe()
-                break
-
-def check_operando():
-    for i in range(len(formula)-1):
-        if formula[i] in operando:
-            if formula[i + 1] in operadores:
-                formula[i + 1]
-                print('Nada de errado até agora')
-            else:
-                print('Parece que você não atribuiu símbolo a um operador 2')
                 break
     
 
@@ -82,25 +72,29 @@ def check_sintaxe():
     if verif == len(formula)-1:
         print('\nFórmula Válida!')
 
-c = 0
-letrocas = list() #LISTA DE LETRAS USADAS PARA A TABELA
-
-def tabela():
-    for c in formula:
-        if c in letras:
-            letrocas.append(c)#ADD LETRAS EM LETROCAS
-
-
-    print(ttg.Truths(letrocas))
-
-
-
 
 def check_alfabeto():
     if set(formula).intersection(alfabeto):
             check_position()
     else:
         print('\nFórmula inválida!')
+
+
+part1 = list()
+part2 = list()
+part3 = list()
+part4 = list()
+
+def tradutor():
+    for i in formula:
+        if i in letras:
+            part1.append(i)
+
+    part2 = formula.replace('^', ' and ')
+    part3 = part2.replace('v', ' or ')
+    part4.append(part3.replace('>', ' => '))
+
+    print(ttg.Truths(part1, part4))
 
 while op != 0:
     print('\n\nMENU DE OPERAÇÕES: \n'
@@ -117,7 +111,7 @@ while op != 0:
         print('\nREGRAS: \n'
               'O alfabeto usado será: P, Q e R; \n'
               'Os simbolos proposicionais são:\n'
-              'Negação = ~\nOu,Or = v\nAnd, Conjução = ^\nSe, Implicação = >\nSe somente se = $\n'
+              'Negação = ~\nOu,Or = v\nAnd, Conjução = ^\nSe, Implicação = >\nSe somente se = =\n'
               'Pode-se usar apenas uma vez cada símbolo de pontuação;\n'
               'O tamanho máximo de cada fórmula é de 12 caracteres (considerando também os símbolos).')
 
@@ -136,4 +130,4 @@ while op != 0:
         print('\nTamanho da fórmula é: ', len(formula))
 
     if op == 4:
-        tabela()
+        tradutor()
